@@ -6,5 +6,10 @@ target 'TodoList' do
   use_frameworks!
 
   # Pods for TodoList
-
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'GoogleSignIn'
+  pod 'GoogleSignInSwiftSupport'
+  
 end

@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct LoginPage: View {
+    @StateObject var viewModel = LoginViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 32) {
             Text("Express TODO")
                 .font(.largeTitle)
                 
             UniversalButton(title: "Sign in with Google") {
-             // TODO: add action here
+                viewModel.signIn()
             }
         }
         .padding(.horizontal, 16)
