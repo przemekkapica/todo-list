@@ -12,6 +12,11 @@
 		4D26B61029D9968400A61F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D26B60F29D9968400A61F33 /* Assets.xcassets */; };
 		4D26B61329D9968400A61F33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D26B61229D9968400A61F33 /* Preview Assets.xcassets */; };
 		4D26B61A29D99D8F00A61F33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D26B61929D99D8E00A61F33 /* GoogleService-Info.plist */; };
+		4D26B62A29DB0A1000A61F33 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62929DB0A1000A61F33 /* LoginPage.swift */; };
+		4D26B62C29DB0B7300A61F33 /* UniversalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62B29DB0B7300A61F33 /* UniversalButton.swift */; };
+		4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */; };
+		4D26B63129DB11F100A61F33 /* LoginPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63029DB11F100A61F33 /* LoginPageState.swift */; };
+		4D26B63329DB121800A61F33 /* LoginPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63229DB121800A61F33 /* LoginPageViewModel.swift */; };
 		62D93A5187340A0520AF497C /* Pods_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27F023932EC51741F6DCCE6 /* Pods_TodoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +29,11 @@
 		4D26B60F29D9968400A61F33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D26B61229D9968400A61F33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D26B61929D99D8E00A61F33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D26B62929DB0A1000A61F33 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		4D26B62B29DB0B7300A61F33 /* UniversalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalButton.swift; sourceTree = "<group>"; };
+		4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAction.swift; sourceTree = "<group>"; };
+		4D26B63029DB11F100A61F33 /* LoginPageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageState.swift; sourceTree = "<group>"; };
+		4D26B63229DB121800A61F33 /* LoginPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewModel.swift; sourceTree = "<group>"; };
 		B27F023932EC51741F6DCCE6 /* Pods_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -60,6 +70,10 @@
 		4D26B60A29D9968200A61F33 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				4D26B62D29DB0BBB00A61F33 /* Helpers */,
+				4D26B62829DB09F100A61F33 /* Domain */,
+				4D26B62729DB09E700A61F33 /* Model */,
+				4D26B62429DB096A00A61F33 /* View */,
 				4D26B60B29D9968200A61F33 /* TodoListApp.swift */,
 				4D26B60D29D9968200A61F33 /* ContentView.swift */,
 				4D26B60F29D9968400A61F33 /* Assets.xcassets */,
@@ -75,6 +89,55 @@
 				4D26B61229D9968400A61F33 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4D26B62429DB096A00A61F33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D26B62629DB099200A61F33 /* Shared */,
+				4D26B62529DB098A00A61F33 /* Pages */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D26B62529DB098A00A61F33 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				4D26B62929DB0A1000A61F33 /* LoginPage.swift */,
+				4D26B63029DB11F100A61F33 /* LoginPageState.swift */,
+				4D26B63229DB121800A61F33 /* LoginPageViewModel.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		4D26B62629DB099200A61F33 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4D26B62B29DB0B7300A61F33 /* UniversalButton.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		4D26B62729DB09E700A61F33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D26B62829DB09F100A61F33 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4D26B62D29DB0BBB00A61F33 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4DB07C97E020A8CB62642EC3 /* Frameworks */ = {
@@ -192,6 +255,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D26B60E29D9968200A61F33 /* ContentView.swift in Sources */,
+				4D26B62C29DB0B7300A61F33 /* UniversalButton.swift in Sources */,
+				4D26B62A29DB0A1000A61F33 /* LoginPage.swift in Sources */,
+				4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */,
+				4D26B63129DB11F100A61F33 /* LoginPageState.swift in Sources */,
+				4D26B63329DB121800A61F33 /* LoginPageViewModel.swift in Sources */,
 				4D26B60C29D9968200A61F33 /* TodoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
