@@ -23,7 +23,7 @@ struct TodoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginPage()
+            AppView()
         }
     }
 }

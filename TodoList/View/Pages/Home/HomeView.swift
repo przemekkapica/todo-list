@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct HomePage: View {
+struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello tododd")
     }
 }
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        HomePage()
+        HomeView()
     }
 }
