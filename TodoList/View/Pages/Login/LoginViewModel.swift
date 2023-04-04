@@ -10,16 +10,24 @@ import SwiftUI
 
 final class LoginViewModel: ObservableObject {
     private let authService: AuthService
+    private let notificationCenter: NotificationCenter
     
-    init(authService: AuthService = AuthServiceImpl()) {
+    init(
+        authService: AuthService = AuthServiceImpl(),
+        notificationCenter: NotificationCenter = .default
+    ) {
         self.authService = authService
+        self.notificationCenter = notificationCenter
     }
     
     func signIn() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootViewController = windowScene.windows.first?.rootViewController else { return }
-        
-        
-        authService.signInWithGoogle(rootViewController: rootViewController)
+
+        Task {
+            authService.signInWithGoogle(rootViewController: rootViewController)
+            
+            notificationCenter.post(name: .signedIn, object: nil)
+        }
     }
 }

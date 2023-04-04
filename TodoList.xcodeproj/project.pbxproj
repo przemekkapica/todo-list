@@ -23,6 +23,9 @@
 		4DB55A9229DC7ACE00F72388 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9129DC7ACE00F72388 /* AppViewModel.swift */; };
 		4DB55A9529DC7CD000F72388 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9429DC7CD000F72388 /* NotificationNameExtension.swift */; };
 		4DB55A9729DC7EED00F72388 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9629DC7EED00F72388 /* LoadingView.swift */; };
+		4DB55A9929DC8BDE00F72388 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9829DC8BDE00F72388 /* HomeViewModel.swift */; };
+		4DB55A9C29DC916800F72388 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9B29DC916800F72388 /* ProfileView.swift */; };
+		4DB55A9E29DC917400F72388 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB55A9D29DC917400F72388 /* ProfileViewModel.swift */; };
 		62D93A5187340A0520AF497C /* Pods_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27F023932EC51741F6DCCE6 /* Pods_TodoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,9 @@
 		4DB55A9129DC7ACE00F72388 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		4DB55A9429DC7CD000F72388 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		4DB55A9629DC7EED00F72388 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		4DB55A9829DC8BDE00F72388 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4DB55A9B29DC916800F72388 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4DB55A9D29DC917400F72388 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B27F023932EC51741F6DCCE6 /* Pods_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +123,7 @@
 		4D26B62529DB098A00A61F33 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4DB55A9A29DC915700F72388 /* Profile */,
 				4DB55A8C29DC4A2A00F72388 /* App */,
 				4DB55A7C29DC300800F72388 /* Home */,
 				4DB55A7B29DC2FEE00F72388 /* Login */,
@@ -178,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				4DB55A7D29DC301500F72388 /* HomeView.swift */,
+				4DB55A9829DC8BDE00F72388 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -206,6 +214,15 @@
 				4DB55A9429DC7CD000F72388 /* NotificationNameExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4DB55A9A29DC915700F72388 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4DB55A9B29DC916800F72388 /* ProfileView.swift */,
+				4DB55A9D29DC917400F72388 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		95120A2B1AACE34D81F5EE97 /* Pods */ = {
@@ -339,11 +356,14 @@
 				4D26B62A29DB0A1000A61F33 /* LoginView.swift in Sources */,
 				4DB55A8129DC307100F72388 /* AuthService.swift in Sources */,
 				4DB55A9729DC7EED00F72388 /* LoadingView.swift in Sources */,
+				4DB55A9C29DC916800F72388 /* ProfileView.swift in Sources */,
 				4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */,
 				4D26B63129DB11F100A61F33 /* LoginState.swift in Sources */,
+				4DB55A9929DC8BDE00F72388 /* HomeViewModel.swift in Sources */,
 				4D26B63329DB121800A61F33 /* LoginViewModel.swift in Sources */,
 				4DB55A9229DC7ACE00F72388 /* AppViewModel.swift in Sources */,
 				4D26B60C29D9968200A61F33 /* TodoListApp.swift in Sources */,
+				4DB55A9E29DC917400F72388 /* ProfileViewModel.swift in Sources */,
 				4DB55A7E29DC301500F72388 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

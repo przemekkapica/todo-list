@@ -6,12 +6,32 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct HomeView: View {
+    
+    @StateObject var viewModel = HomeViewModel()
+    
     var body: some View {
-        Text("Hello tododd")
+        NavigationView {
+            ScrollView {
+                
+            }
+            .navigationTitle("Your TODOs")
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .foregroundColor(Color.primary)
+                    }
+                }
+            }
+        }
     }
 }
+
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
