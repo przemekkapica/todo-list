@@ -12,7 +12,7 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: 8) {
             Spacer()
             ProfileInfo(viewModel: viewModel)
             Spacer()
@@ -39,6 +39,12 @@ struct ProfileInfo: View {
             
         Text("\(viewModel.fullname)")
             .font(.title)
+            .padding(.top, 16)
+        if let email = viewModel.email {
+            Text("\(email)")
+                .font(.body)
+                .foregroundColor(Color.secondary)
+        }
     }
     
 }
