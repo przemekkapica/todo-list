@@ -21,9 +21,9 @@ struct UniversalButton: View {
     
     private var buttonLabel: some View {
         Text(title)
-            .font(.title2)
+            .font(.title3)
             .foregroundColor(Color.white)
-            .frame(height: 56)
+            .frame(height: 52)
             .frame(maxWidth: .infinity)
             .background(Color.green)
             .cornerRadius(16)

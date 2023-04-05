@@ -14,9 +14,21 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                
+            List {
+                ForEach(viewModel.todos, id: \.id) { todo in
+                    Text("\(todo.title)")
+                        .font(.body)
+                        .strikethrough(todo.done)
+                        .foregroundColor(todo.done ? Color.secondary : Color.primary)
+                }.onDelete { indexSet in
+                    
+                }
+                .onMove { indexSet, index in
+                    
+                }
             }
+            .padding(.top, 20)
+            .listStyle(.plain)
             .navigationTitle("Your TODOs")
             .toolbar {
                 ToolbarItem {
@@ -26,6 +38,10 @@ struct HomeView: View {
                         Image(systemName: "person.crop.circle")
                             .foregroundColor(Color.primary)
                     }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
                 }
             }
         }

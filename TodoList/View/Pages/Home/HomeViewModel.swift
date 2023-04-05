@@ -9,4 +9,15 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
 
+    @Published var todos: [Todo] = []
+    
+    private let todoService: TodoService
+    
+    init(todoService: TodoService = TodoServiceImpl()) {
+        self.todoService = todoService
+        
+        todoService.fetchTodos { [weak self] todos in
+            self?.todos = todos
+        }
+    }
 }
