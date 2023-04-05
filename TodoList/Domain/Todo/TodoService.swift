@@ -12,9 +12,14 @@ let TodosCollectionName = "todos"
 
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
+    func createTodo(title: String, notes: String?)
 }
 
 final class TodoServiceImpl: TodoService {
+    func createTodo(title: String, notes: String?) {
+        firestore.collection(TodosCollectionName).addDocument(data: ["title": title, "notes": notes])
+    }
+    
     private let firestore = Firestore.firestore()
     
     func fetchTodos(completion: @escaping ([Todo]) -> Void) {
@@ -25,7 +30,7 @@ final class TodoServiceImpl: TodoService {
                         id: document.documentID,
                         title: document["title"] as? String ?? "",
                         done: document["done"] as? Bool ?? false,
-                        message: document["message"] as? String ?? "")
+                        message: document["notes"] as? String ?? "")
                 }
                 
                 completion(todos)

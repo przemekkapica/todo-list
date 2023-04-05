@@ -19,7 +19,7 @@ struct LoginView: View {
                 viewModel.signIn()
             }
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 24)
     }
 }
 

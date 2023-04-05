@@ -27,6 +27,10 @@ struct UniversalButton: View {
             .frame(maxWidth: .infinity)
             .background(Color.green)
             .cornerRadius(16)
+            .shadow(
+                color: Color.secondary.opacity(0.5),
+                radius: 8,
+                x: 4, y: 6)
     }
 }
 

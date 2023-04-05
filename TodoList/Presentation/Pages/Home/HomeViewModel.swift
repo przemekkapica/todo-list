@@ -8,14 +8,16 @@
 import Foundation
 
 final class HomeViewModel: ObservableObject {
-
     @Published var todos: [Todo] = []
+    @Published var bottomSheetPresented = false
     
     private let todoService: TodoService
     
     init(todoService: TodoService = TodoServiceImpl()) {
         self.todoService = todoService
-        
+    }
+    
+    func fetchTodos() {
         todoService.fetchTodos { [weak self] todos in
             self?.todos = todos
         }

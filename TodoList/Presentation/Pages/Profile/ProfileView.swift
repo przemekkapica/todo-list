@@ -19,8 +19,10 @@ struct ProfileView: View {
             UniversalButton(title: "Sign out") {
                 viewModel.signOut()
             }
-        }.padding(.horizontal, 16)
+        }.padding(.horizontal, 24)
+            .navigationBarTitle("")
     }
+//        .navigationBarTitle("")
 }
 
 struct ProfileInfo: View {

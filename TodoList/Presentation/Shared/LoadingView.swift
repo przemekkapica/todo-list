@@ -10,8 +10,6 @@ import SwiftUI
 struct LoadingView: View {
     var body: some View {
         ZStack {
-//            Color.background(Color.white).edgesIgnoringSafeArea(.all)
-            
             ProgressView()
                 .scaleEffect(x: 2, y: 2, anchor: .center)
         }
