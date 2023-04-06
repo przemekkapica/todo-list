@@ -7,6 +7,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import UIKit
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
@@ -35,11 +36,7 @@ struct HomeView: View {
                         
                     }
                     .onDelete(perform: viewModel.deleteTodo)
-                    .onMove { indexSet, index in
-                        
-                    }
                 }
-//                .padding(.top, 20)
                 .listStyle(.sidebar)
                 .navigationTitle("Your TODOs")
                 .toolbar {

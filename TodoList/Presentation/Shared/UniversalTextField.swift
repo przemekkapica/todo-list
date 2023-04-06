@@ -22,12 +22,10 @@ struct UniversalTextField: View {
     }
 }
 
-//struct UniversalTextField_Previews: PreviewProvider {
-//    @Binding var value: String
-//
-//    static var previews: some View {
-////        UniversalTextField(
-////            value: value,
-////            title: "Custom field")
-//    }
-//}
+struct UniversalTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        UniversalTextField(
+            title: "Custom field",
+            value: .constant("Preview"))
+    }
+}
