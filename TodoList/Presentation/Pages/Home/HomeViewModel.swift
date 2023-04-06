@@ -28,9 +28,7 @@ final class HomeViewModel: ObservableObject {
             self.todos[$0].id
         }[0]
         
-        DispatchQueue.main.async {
-            self.todoService.deleteTodo(id: id)
-        }
+        self.todoService.deleteTodo(completion: self.fetchTodos, id: id)
     }
     
     func toggleTodo(todo: Todo) {

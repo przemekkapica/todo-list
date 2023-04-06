@@ -13,12 +13,16 @@ import GoogleSignIn
 
 
 protocol AuthService {
-    func signInWithGoogle(rootViewController: UIViewController)
+    func signInWithGoogle(
+        completion: @escaping SimpleAction,
+        rootViewController: UIViewController)
 }
 
 final class AuthServiceImpl: AuthService {
     
-    func signInWithGoogle(rootViewController: UIViewController) {
+    func signInWithGoogle(
+        completion: @escaping SimpleAction,
+        rootViewController: UIViewController) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         let config = GIDConfiguration(clientID: clientID)
@@ -41,6 +45,8 @@ final class AuthServiceImpl: AuthService {
                                                            accessToken: user.accessToken.tokenString)
             
             self.authWithFirebase(with: credential)
+            
+            completion()
         }
     }
     

@@ -13,7 +13,7 @@ let TodosCollectionName = "todos"
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
     func createTodo(description: String, priority: TodoPriority)
-    func deleteTodo(id: String)
+    func deleteTodo(completion: @escaping SimpleAction, id: String)
     func toggleTodo(id: String, done: Bool)
 }
 
@@ -52,10 +52,12 @@ final class TodoServiceImpl: TodoService {
         }
     }
     
-    func deleteTodo(id: String) {
+    func deleteTodo(completion: @escaping SimpleAction, id: String) {
         firestore.collection(TodosCollectionName).document(id).delete() { error in
             if let error = error {
                 print(error)
+            } else {
+                completion()
             }
         }
     }
