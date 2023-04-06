@@ -22,4 +22,12 @@ final class HomeViewModel: ObservableObject {
             self?.todos = todos
         }
     }
+    
+    func deleteTodo(indexSet: IndexSet) {
+        let id = indexSet.map {
+            self.todos[$0].id
+        }[0]
+        
+        todoService.deleteTodo(id: id)
+    }
 }

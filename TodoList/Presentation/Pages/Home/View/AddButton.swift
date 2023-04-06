@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AddButton: View {
     var body: some View {
-        Text("+")
+        Image(systemName: "plus")
             .foregroundColor(Color.white)
-            .font(.largeTitle)
+            .font(.title2)
+            .fontWeight(.semibold)
             .frame(width: 60, height: 60)
-//            .padding(.all, 4)
+            .padding(.all, 2)
             .background(Color.green)
             .cornerRadius(50)
             .padding()

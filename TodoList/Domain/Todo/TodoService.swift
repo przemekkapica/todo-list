@@ -13,14 +13,20 @@ let TodosCollectionName = "todos"
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
     func createTodo(title: String, notes: String?)
+    func deleteTodo(id: String)
 }
 
 final class TodoServiceImpl: TodoService {
+    private let firestore = Firestore.firestore()
+    
     func createTodo(title: String, notes: String?) {
-        firestore.collection(TodosCollectionName).addDocument(data: ["title": title, "notes": notes])
+        firestore.collection(TodosCollectionName).addDocument(
+            data: [
+                "title": title,
+                "notes": notes ?? "",
+                "done": false])
     }
     
-    private let firestore = Firestore.firestore()
     
     func fetchTodos(completion: @escaping ([Todo]) -> Void) {
         firestore.collection(TodosCollectionName).getDocuments { querySnaphot, error in
@@ -34,6 +40,14 @@ final class TodoServiceImpl: TodoService {
                 }
                 
                 completion(todos)
+            }
+        }
+    }
+    
+    func deleteTodo(id: String) {
+        firestore.collection(TodosCollectionName).document(id).delete() { error in
+            if let error = error {
+                print(error)
             }
         }
     }

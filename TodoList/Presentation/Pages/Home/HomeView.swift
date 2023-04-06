@@ -20,12 +20,7 @@ struct HomeView: View {
                             .font(.body)
                             .strikethrough(todo.done)
                             .foregroundColor(todo.done ? Color.secondary : Color.primary)
-                    }.onDelete { indexSet in
-                        
-                    }
-                    .onMove { indexSet, index in
-                        
-                    }
+                    }.onDelete(perform: viewModel.deleteTodo)
                 }
                 .padding(.top, 20)
                 .listStyle(.plain)
