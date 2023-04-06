@@ -12,7 +12,7 @@ let TodosCollectionName = "todos"
 
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
-    func createTodo(title: String, priority: TodoPriority)
+    func createTodo(description: String, priority: TodoPriority)
     func deleteTodo(id: String)
     func toggleTodo(id: String, done: Bool)
 }
@@ -20,11 +20,11 @@ protocol TodoService {
 final class TodoServiceImpl: TodoService {
     private let firestore = Firestore.firestore()
     
-    func createTodo(title: String, priority: TodoPriority) {
+    func createTodo(description: String, priority: TodoPriority) {
         firestore.collection(TodosCollectionName).addDocument(
             data: [
-                "title": title,
-                "priority": priority,
+                "description": description,
+                "priority": priority.rawValue,
                 "done": false])
     }
     
@@ -32,12 +32,19 @@ final class TodoServiceImpl: TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void) {
         firestore.collection(TodosCollectionName).getDocuments { querySnaphot, error in
             if let snapshot = querySnaphot {
-                let todos = snapshot.documents.map { document in
+                var todos = snapshot.documents.map { document in
                     return Todo(
                         id: document.documentID,
-                        title: document["title"] as? String ?? "",
+                        description: document["description"] as? String ?? "",
                         done: document["done"] as? Bool ?? false,
                         priority: document["priority"] as? TodoPriority ?? TodoPriority.low)
+                }
+                
+                todos.sort {
+                    $0.priority == TodoPriority.high && $1.priority == TodoPriority.normal
+                }
+                todos.sort {
+                    !$0.done && $1.done
                 }
                 
                 completion(todos)

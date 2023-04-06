@@ -14,7 +14,7 @@ final class CreateTodoViewModel: ObservableObject {
         self.todoService = todoService
     }
     
-    func createTodo(title: String, priority: TodoPriority) {
-        self.todoService.createTodo(title: title, priority: priority)
+    func createTodo(description: String, priority: TodoPriority) {
+        self.todoService.createTodo(description: description, priority: priority)
     }
 }

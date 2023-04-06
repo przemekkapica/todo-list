@@ -20,7 +20,7 @@ struct HomeView: View {
                             viewModel.toggleTodo(todo: todo)
                         } label: {
                             HStack {
-                                Text("\(todo.title)")
+                                Text("\(todo.description)")
                                     .font(.body)
                                     .strikethrough(todo.done)
                                     .foregroundColor(todo.done ? Color.secondary : Color.primary)
@@ -28,7 +28,7 @@ struct HomeView: View {
                                 if !todo.done {
                                     Circle()
                                         .frame(width: 10, height: 10)
-                                        .foregroundColor(mapPriorityToColor(priority: todo.priority))                                 
+                                        .foregroundColor(mapPriorityToColor(priority: todo.priority))
                                 }
                             }
                         }

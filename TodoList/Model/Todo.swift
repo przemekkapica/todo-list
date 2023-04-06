@@ -15,7 +15,7 @@ enum TodoPriority: String {
 
 struct Todo: Identifiable {
     var id: String
-    var title: String
+    var description: String
     var done: Bool
     var priority: TodoPriority
 }

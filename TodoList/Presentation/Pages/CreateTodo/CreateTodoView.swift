@@ -9,18 +9,19 @@ import SwiftUI
 
 struct CreateTodoView: View {
     @StateObject var viewModel = CreateTodoViewModel()
-    @State var title: String = ""
-    @State var notes: String = ""
+    @State var description: String = ""
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack(spacing: 16) {
-            UniversalTextField(title: "Title", value: $title)
+            UniversalTextField(title: "Title", value: $description)
             Spacer()
             UniversalButton(title: "Create TODO") {
                 Task {
-                    viewModel.createTodo(title: title, priority: TodoPriority.low)
+                    viewModel.createTodo(
+                        description: description,
+                        priority: TodoPriority.low)
                     presentationMode.wrappedValue.dismiss()                    
                 }
             }
