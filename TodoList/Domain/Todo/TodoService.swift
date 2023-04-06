@@ -12,18 +12,19 @@ let TodosCollectionName = "todos"
 
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
-    func createTodo(title: String, notes: String?)
+    func createTodo(title: String, priority: TodoPriority)
     func deleteTodo(id: String)
+    func toggleTodo(id: String, done: Bool)
 }
 
 final class TodoServiceImpl: TodoService {
     private let firestore = Firestore.firestore()
     
-    func createTodo(title: String, notes: String?) {
+    func createTodo(title: String, priority: TodoPriority) {
         firestore.collection(TodosCollectionName).addDocument(
             data: [
                 "title": title,
-                "notes": notes ?? "",
+                "priority": priority,
                 "done": false])
     }
     
@@ -36,7 +37,7 @@ final class TodoServiceImpl: TodoService {
                         id: document.documentID,
                         title: document["title"] as? String ?? "",
                         done: document["done"] as? Bool ?? false,
-                        message: document["notes"] as? String ?? "")
+                        priority: document["priority"] as? TodoPriority ?? TodoPriority.low)
                 }
                 
                 completion(todos)
@@ -48,6 +49,17 @@ final class TodoServiceImpl: TodoService {
         firestore.collection(TodosCollectionName).document(id).delete() { error in
             if let error = error {
                 print(error)
+            }
+        }
+    }
+    
+    func toggleTodo(id: String, done: Bool) {
+        firestore
+            .collection(TodosCollectionName)
+            .document(id)
+            .updateData(["done": !done]) { error in
+                if let error = error {
+                    print(error)
             }
         }
     }

@@ -16,11 +16,28 @@ struct HomeView: View {
             ZStack(alignment: .bottomTrailing) {
                 List {
                     ForEach(viewModel.todos, id: \.id) { todo in
-                        Text("\(todo.title)")
-                            .font(.body)
-                            .strikethrough(todo.done)
-                            .foregroundColor(todo.done ? Color.secondary : Color.primary)
-                    }.onDelete(perform: viewModel.deleteTodo)
+                        Button {
+                            viewModel.toggleTodo(todo: todo)
+                        } label: {
+                            HStack {
+                                Text("\(todo.title)")
+                                    .font(.body)
+                                    .strikethrough(todo.done)
+                                    .foregroundColor(todo.done ? Color.secondary : Color.primary)
+                                Spacer()
+                                if !todo.done {
+                                    Circle()
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(mapPriorityToColor(priority: todo.priority))                                 
+                                }
+                            }
+                        }
+                        
+                    }
+                    .onDelete(perform: viewModel.deleteTodo)
+                    .onMove { indexSet, index in
+                        
+                    }
                 }
                 .padding(.top, 20)
                 .listStyle(.plain)
@@ -46,6 +63,17 @@ struct HomeView: View {
                 }
             }
             .onAppear(perform: viewModel.fetchTodos)
+        }
+    }
+    
+    func mapPriorityToColor(priority: TodoPriority) -> Color {
+        switch(priority) {
+            case TodoPriority.low:
+                return Color.green
+            case TodoPriority.normal:
+                return Color.yellow
+            case TodoPriority.high:
+                return Color.red
         }
     }
 }

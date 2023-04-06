@@ -7,9 +7,15 @@
 
 import Foundation
 
+enum TodoPriority: String {
+    case low = "low"
+    case normal = "normal"
+    case high = "high"
+}
+
 struct Todo: Identifiable {
     var id: String
     var title: String
     var done: Bool
-    var message: String?
+    var priority: TodoPriority
 }

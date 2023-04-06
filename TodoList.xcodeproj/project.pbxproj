@@ -16,7 +16,7 @@
 		4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */; };
 		4D26B63129DB11F100A61F33 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63029DB11F100A61F33 /* LoginState.swift */; };
 		4D26B63329DB121800A61F33 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63229DB121800A61F33 /* LoginViewModel.swift */; };
-		4D59F6BE29DDA66E00196A5B /* TodoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6BD29DDA66E00196A5B /* TodoDTO.swift */; };
+		4D59F6BE29DDA66E00196A5B /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6BD29DDA66E00196A5B /* Todo.swift */; };
 		4D59F6C029DDA6E900196A5B /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6BF29DDA6E900196A5B /* TodoService.swift */; };
 		4D59F6C229DDDA1700196A5B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6C129DDDA1700196A5B /* AddButton.swift */; };
 		4D59F6C529DDDB4E00196A5B /* CreateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6C429DDDB4E00196A5B /* CreateTodoView.swift */; };
@@ -48,7 +48,7 @@
 		4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAction.swift; sourceTree = "<group>"; };
 		4D26B63029DB11F100A61F33 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		4D26B63229DB121800A61F33 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		4D59F6BD29DDA66E00196A5B /* TodoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDTO.swift; sourceTree = "<group>"; };
+		4D59F6BD29DDA66E00196A5B /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		4D59F6BF29DDA6E900196A5B /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
 		4D59F6C129DDDA1700196A5B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		4D59F6C429DDDB4E00196A5B /* CreateTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoView.swift; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 		4D26B62629DB099200A61F33 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4D26B62B29DB0B7300A61F33 /* UniversalButton.swift */,
 				4DB55A9629DC7EED00F72388 /* LoadingView.swift */,
+				4D26B62B29DB0B7300A61F33 /* UniversalButton.swift */,
 				4D59F6C929DDE03600196A5B /* UniversalTextField.swift */,
 			);
 			path = Shared;
@@ -157,7 +157,7 @@
 		4D26B62729DB09E700A61F33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4D59F6BD29DDA66E00196A5B /* TodoDTO.swift */,
+				4D59F6BD29DDA66E00196A5B /* Todo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				4DB55A9229DC7ACE00F72388 /* AppViewModel.swift in Sources */,
 				4D26B60C29D9968200A61F33 /* TodoListApp.swift in Sources */,
 				4DB55A9E29DC917400F72388 /* ProfileViewModel.swift in Sources */,
-				4D59F6BE29DDA66E00196A5B /* TodoDTO.swift in Sources */,
+				4D59F6BE29DDA66E00196A5B /* Todo.swift in Sources */,
 				4D59F6CA29DDE03600196A5B /* UniversalTextField.swift in Sources */,
 				4DB55A7E29DC301500F72388 /* HomeView.swift in Sources */,
 				4D59F6C229DDDA1700196A5B /* AddButton.swift in Sources */,

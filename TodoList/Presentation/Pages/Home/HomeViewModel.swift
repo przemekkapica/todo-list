@@ -30,4 +30,9 @@ final class HomeViewModel: ObservableObject {
         
         todoService.deleteTodo(id: id)
     }
+    
+    func toggleTodo(todo: Todo) {
+        todoService.toggleTodo(id: todo.id, done: todo.done)
+        self.fetchTodos()
+    }
 }

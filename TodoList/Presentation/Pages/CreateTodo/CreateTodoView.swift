@@ -17,11 +17,10 @@ struct CreateTodoView: View {
     var body: some View {
         VStack(spacing: 16) {
             UniversalTextField(title: "Title", value: $title)
-            UniversalTextField(title: "Notes", value: $notes)
             Spacer()
             UniversalButton(title: "Create TODO") {
                 Task {
-                    viewModel.createTodo(title: title, notes: notes)
+                    viewModel.createTodo(title: title, priority: TodoPriority.low)
                     presentationMode.wrappedValue.dismiss()                    
                 }
             }
