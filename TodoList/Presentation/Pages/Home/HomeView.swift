@@ -39,8 +39,8 @@ struct HomeView: View {
                         
                     }
                 }
-                .padding(.top, 20)
-                .listStyle(.plain)
+//                .padding(.top, 20)
+                .listStyle(.sidebar)
                 .navigationTitle("Your TODOs")
                 .toolbar {
                     ToolbarItem {
@@ -56,24 +56,29 @@ struct HomeView: View {
                         EditButton()
                     }
                 }
-                NavigationLink {
-                    CreateTodoView()
-                } label: {
-                    AddButton()
-                }
+                AddButton()
+                    .sheet(
+                        isPresented: $viewModel.bottomSheetPresented,
+                        onDismiss: viewModel.fetchTodos, content: {
+                            CreateTodoView()
+                                .presentationDetents([.fraction(0.36)])})
+                    .onTapGesture {
+                        viewModel.bottomSheetPresented = true
+                    }
             }
-            .onAppear(perform: viewModel.fetchTodos)
         }
+        .onAppear(perform: viewModel.fetchTodos)
+        
     }
     
     func mapPriorityToColor(priority: TodoPriority) -> Color {
         switch(priority) {
-            case TodoPriority.low:
-                return Color.green
-            case TodoPriority.normal:
-                return Color.yellow
-            case TodoPriority.high:
-                return Color.red
+        case TodoPriority.low:
+            return Color.green
+        case TodoPriority.normal:
+            return Color.yellow
+        case TodoPriority.high:
+            return Color.red
         }
     }
 }

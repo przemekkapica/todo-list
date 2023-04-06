@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TodoPriority: String {
+enum TodoPriority: String, Equatable, CaseIterable {
     case low = "low"
     case normal = "normal"
     case high = "high"

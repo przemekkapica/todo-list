@@ -37,11 +37,14 @@ final class TodoServiceImpl: TodoService {
                         id: document.documentID,
                         description: document["description"] as? String ?? "",
                         done: document["done"] as? Bool ?? false,
-                        priority: document["priority"] as? TodoPriority ?? TodoPriority.low)
+                        priority: TodoPriority(rawValue: document["priority"] as? String ?? "low") ?? .normal)
                 }
                 
                 todos.sort {
                     $0.priority == TodoPriority.high && $1.priority == TodoPriority.normal
+                }
+                todos.sort {
+                    $0.priority == TodoPriority.normal && $1.priority == TodoPriority.low
                 }
                 todos.sort {
                     !$0.done && $1.done
