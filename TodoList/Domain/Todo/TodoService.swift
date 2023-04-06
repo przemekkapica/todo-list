@@ -41,13 +41,10 @@ final class TodoServiceImpl: TodoService {
                 }
                 
                 todos.sort {
-                    $0.priority == TodoPriority.high && $1.priority == TodoPriority.normal
+                    $0.priority < $1.priority // sorts by todo priority
                 }
                 todos.sort {
-                    $0.priority == TodoPriority.normal && $1.priority == TodoPriority.low
-                }
-                todos.sort {
-                    !$0.done && $1.done
+                    !$0.done && $1.done // sorts by todo done status
                 }
                 
                 completion(todos)

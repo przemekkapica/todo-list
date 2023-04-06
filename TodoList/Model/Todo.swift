@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum TodoPriority: String, Equatable, CaseIterable {
-    case low = "low"
-    case normal = "normal"
-    case high = "high"
-}
-
 struct Todo: Identifiable {
     var id: String
     var description: String
