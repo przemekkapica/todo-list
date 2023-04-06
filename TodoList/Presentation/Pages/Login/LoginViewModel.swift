@@ -24,10 +24,10 @@ final class LoginViewModel: ObservableObject {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootViewController = windowScene.windows.first?.rootViewController else { return }
         
-        
         authService.signInWithGoogle(
             completion: emitSignInState,
-            rootViewController: rootViewController)
+            rootViewController: rootViewController
+        )
     }
     
     func emitSignInState() {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateTodoView: View {
+struct CreateTodoSheet: View {
     @StateObject var viewModel = CreateTodoViewModel()
     @State var description: String = ""
     @State var selectedPriority: TodoPriority = .low
@@ -18,19 +18,21 @@ struct CreateTodoView: View {
         VStack(spacing: 4) {
             sheetTopIndicator
             VStack(alignment: .leading, spacing: 8) {
-                UniversalTextField(title: "Task description", value: $description)
+                UniversalTextField(
+                    value: $description,
+                    title: "Task description"
+                )
                 Text("Task priority")
                     .font(.callout)
                     .padding(.top, 16)
                 PriorityPicker(selectedPriority: $selectedPriority)
                 Spacer()
                 UniversalButton(title: "Create") {
-                    Task {
-                        viewModel.createTodo(
-                            description: description,
-                            priority: selectedPriority)
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                    viewModel.createTodo(
+                        description: description,
+                        priority: selectedPriority
+                    )
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
         }
@@ -43,8 +45,8 @@ struct CreateTodoView: View {
         .padding(10)
 }
 
-struct CreateTodoView_Previews: PreviewProvider {
+struct CreateTodoSheet_Previews: PreviewProvider {
     static var previews: some View {
-        CreateTodoView(selectedPriority: .low)
+        CreateTodoSheet(selectedPriority: .low)
     }
 }

@@ -25,15 +25,13 @@ final class ProfileViewModel: ObservableObject {
     }
     
     func signOut() {
-        Task {
-            do {
-                try Auth.auth().signOut()
-                GIDSignIn.sharedInstance.signOut()
-            } catch let signOutError as NSError {
-                print("Error signing out: %@", signOutError)
-            }
-            
-            notificationCenter.post(name: .signedOut, object: nil)
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
         }
+        
+        notificationCenter.post(name: .signedOut, object: nil)
     }
 }

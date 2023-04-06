@@ -13,32 +13,23 @@ struct PriorityPicker: View {
     
     var body: some View {
         HStack {
-            PriorityView(
-                priorityTitle: TodoPriority.low.rawValue.capitalized,
-                selectedPriority: $selectedPriority)
-            .onTapGesture {
-                self.selectedPriority = .low
-            }
-            PriorityView(
-                priorityTitle: TodoPriority.normal.rawValue.capitalized,
-                selectedPriority: $selectedPriority)
-            .onTapGesture {
-                self.selectedPriority = .normal
-            }
-            PriorityView(
-                priorityTitle: TodoPriority.high.rawValue.capitalized,
-                selectedPriority: $selectedPriority)
-            .onTapGesture {
-                self.selectedPriority = .high
+            ForEach(TodoPriority.allCases, id: \.self) { priority in
+                PriorityView(
+                    selectedPriority: $selectedPriority,
+                    priorityTitle: priority.rawValue.capitalized
+                )
+                .onTapGesture {
+                    self.selectedPriority = priority
+                }
             }
         }
     }
 }
 
 struct PriorityView: View {
-    let priorityTitle : String
-    
     @Binding var selectedPriority: TodoPriority
+    
+    let priorityTitle : String
     
     var body: some View {
         Text(priorityTitle)

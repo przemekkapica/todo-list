@@ -21,7 +21,7 @@ struct AppView: View {
                     LoginView()
             }
         }
-        .transition(.opacity)
+        .transition(.slide)
     }
 }
 

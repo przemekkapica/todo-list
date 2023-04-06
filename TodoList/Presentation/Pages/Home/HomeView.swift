@@ -15,60 +15,62 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    ForEach(viewModel.todos, id: \.id) { todo in
-                        Button {
-                            viewModel.toggleTodo(todo: todo)
-                        } label: {
-                            HStack {
-                                Text("\(todo.description)")
-                                    .font(.body)
-                                    .strikethrough(todo.done)
-                                    .foregroundColor(todo.done ? Color.secondary : Color.primary)
-                                Spacer()
-                                if !todo.done {
-                                    Circle()
-                                        .frame(width: 10, height: 10)
-                                        .foregroundColor(mapPriorityToColor(priority: todo.priority))
-                                }
-                            }
-                        }
-                        
-                    }
-                    .onDelete(perform: viewModel.deleteTodo)
-                }
-                .listStyle(.sidebar)
-                .navigationTitle("Your TODOs")
-                .toolbar {
-                    ToolbarItem {
-                        NavigationLink {
-                            ProfileView()
-                        } label: {
-                            Image(systemName: "person.crop.circle")
-                                .foregroundColor(Color.primary)
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        EditButton()
-                    }
-                }
-                AddButton()
-                    .sheet(
-                        isPresented: $viewModel.bottomSheetPresented,
-                        onDismiss: viewModel.fetchTodos, content: {
-                            CreateTodoView()
-                                .presentationDetents([.fraction(0.36)])})
-                    .onTapGesture {
-                        viewModel.bottomSheetPresented = true
-                    }
+                TodoList(viewModel: viewModel)
+                
+                AddTodoButton(viewModel: viewModel)
             }
         }
         .onAppear(perform: viewModel.fetchTodos)
-        
+    }
+}
+
+struct TodoList: View {
+    @ObservedObject var viewModel: HomeViewModel
+    
+    var body: some View {
+        List {
+            ForEach(viewModel.todos, id: \.id) { todo in
+                Button {
+                    viewModel.toggleTodo(todo: todo)
+                } label: {
+                    todoEntry(todo: todo)
+                }
+            }
+            .onDelete(perform: viewModel.deleteTodo)
+        }
+        .listStyle(.sidebar)
+        .navigationTitle("Your TODOs")
+        .toolbar {
+            ToolbarItem {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    Image(systemName: "person.crop.circle")
+                        .foregroundColor(Color.primary)
+                }
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+        }
     }
     
-    func mapPriorityToColor(priority: TodoPriority) -> Color {
+    private func todoEntry(todo: Todo) -> some View {
+        return HStack {
+            Text("\(todo.description)")
+                .font(.body)
+                .strikethrough(todo.done)
+                .foregroundColor(todo.done ? Color.secondary : Color.primary)
+            Spacer()
+            if !todo.done {
+                Circle()
+                    .frame(width: 10, height: 10)
+                    .foregroundColor(mapPriorityToColor(priority: todo.priority))
+            }
+        }
+    }
+    
+    private func mapPriorityToColor(priority: TodoPriority) -> Color {
         switch(priority) {
         case TodoPriority.low:
             return Color.green
@@ -80,6 +82,22 @@ struct HomeView: View {
     }
 }
 
+struct AddTodoButton: View {
+    @ObservedObject var viewModel: HomeViewModel
+    
+    var body: some View {
+        AddButton(action: {
+            viewModel.bottomSheetPresented = true
+        })
+        .sheet(
+            isPresented: $viewModel.bottomSheetPresented,
+            onDismiss: viewModel.fetchTodos,
+            content: {
+                CreateTodoSheet()
+                    .presentationDetents([.fraction(0.36)])
+            })
+    }
+}
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {

@@ -14,7 +14,7 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 32) {
             Text("Express TODO")
                 .font(.largeTitle)
-                
+            
             UniversalButton(title: "Sign in with Google") {
                 viewModel.signIn()
             }

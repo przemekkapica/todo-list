@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct UniversalTextField: View {
-    var title: String
     @Binding var value: String
+
+    var title: String
     
     var body: some View {
         TextField(title, text: $value)
@@ -25,7 +26,8 @@ struct UniversalTextField: View {
 struct UniversalTextField_Previews: PreviewProvider {
     static var previews: some View {
         UniversalTextField(
-            title: "Custom field",
-            value: .constant("Preview"))
+            value: .constant("Preview"),
+            title: "Custom field"
+        )
     }
 }

@@ -25,9 +25,10 @@ final class TodoServiceImpl: TodoService {
             data: [
                 "description": description,
                 "priority": priority.rawValue,
-                "done": false])
+                "done": false
+            ]
+        )
     }
-    
     
     func fetchTodos(completion: @escaping ([Todo]) -> Void) {
         firestore.collection(TodosCollectionName).getDocuments { querySnaphot, error in
@@ -37,7 +38,8 @@ final class TodoServiceImpl: TodoService {
                         id: document.documentID,
                         description: document["description"] as? String ?? "",
                         done: document["done"] as? Bool ?? false,
-                        priority: TodoPriority(rawValue: document["priority"] as? String ?? "low") ?? .normal)
+                        priority: TodoPriority(rawValue: document["priority"] as? String ?? "low") ?? .normal
+                    )
                 }
                 
                 todos.sort {

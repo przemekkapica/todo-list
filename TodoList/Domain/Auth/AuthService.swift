@@ -22,7 +22,8 @@ final class AuthServiceImpl: AuthService {
     
     func signInWithGoogle(
         completion: @escaping SimpleAction,
-        rootViewController: UIViewController) {
+        rootViewController: UIViewController
+    ) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         let config = GIDConfiguration(clientID: clientID)
@@ -41,8 +42,9 @@ final class AuthServiceImpl: AuthService {
                 return
             }
             
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                           accessToken: user.accessToken.tokenString)
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken,
+                accessToken: user.accessToken.tokenString)
             
             self.authWithFirebase(with: credential)
             
