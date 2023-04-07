@@ -596,6 +596,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AlertToast (1.3.9)
   - AppAuth (1.6.0):
     - AppAuth/Core (= 1.6.0)
     - AppAuth/ExternalUserAgent (= 1.6.0)
@@ -731,6 +732,7 @@ PODS:
   - PromisesObjC (2.2.0)
 
 DEPENDENCIES:
+  - AlertToast
   - FirebaseAuth
   - FirebaseFirestore
   - FirebaseFirestoreSwift
@@ -740,6 +742,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AlertToast
     - AppAuth
     - BoringSSL-GRPC
     - FirebaseAuth
@@ -763,6 +766,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
+  AlertToast: e8db15da727beff75500bcf33a78cd617f408fa1
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FirebaseAuth: 743e5cd568af59d6d99a91ea9300843672515cf7
@@ -784,6 +788,6 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
 
-PODFILE CHECKSUM: d05b706100770913c826f51ce49396d40315706d
+PODFILE CHECKSUM: b1d89a9dac03bc580e77c2725a2646601d750687
 
 COCOAPODS: 1.10.0

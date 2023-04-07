@@ -8,6 +8,7 @@
 import SwiftUI
 import GoogleSignIn
 import UIKit
+import AlertToast
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
@@ -18,6 +19,9 @@ struct HomeView: View {
                 TodoList(viewModel: viewModel)
                 
                 AddTodoButton(viewModel: viewModel)
+            }
+            .toast(isPresenting: $viewModel.showErrorToast) {
+                errorToast()
             }
         }
         .onAppear(perform: viewModel.fetchTodos)

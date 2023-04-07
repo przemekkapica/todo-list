@@ -8,6 +8,8 @@
 import Foundation
 
 final class CreateTodoViewModel: ObservableObject {
+    @Published var bottomSheetPresented = false
+    
     private let todoService: TodoService
     
     init(todoService: TodoService = TodoServiceImpl()) {
@@ -18,6 +20,10 @@ final class CreateTodoViewModel: ObservableObject {
         self.todoService.createTodo(
             description: description,
             priority: priority
-        )
+        ) { error in
+            if let error = error {
+                print(error)
+            }
+        }
     }
 }

@@ -13,25 +13,35 @@ final class ProfileViewModel: ObservableObject {
     @Published var fullname: String
     @Published var photoUrl: URL?
     @Published var email: String?
+    @Published var showErrorToast = false
+    @Published var showSuccessToast = false
     
     private let notificationCenter: NotificationCenter
+    private let authService: AuthService
     
-    init(notificationCenter: NotificationCenter = .default) {
+    init(
+        notificationCenter: NotificationCenter = .default,
+        authService: AuthService = AuthServiceImpl()
+    ) {
         self.fullname = Auth.auth().currentUser?.displayName ?? "Preview name"
         self.email = GIDSignIn.sharedInstance.currentUser?.profile?.email ?? "previewemail@mail.com"
         self.photoUrl = Auth.auth().currentUser?.photoURL
         
         self.notificationCenter = notificationCenter
+        self.authService = authService
     }
     
     func signOut() {
-        do {
-            try Auth.auth().signOut()
-            GIDSignIn.sharedInstance.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        self.authService.signOut { error in
+            if let error = error {
+                self.showErrorToast = true
+                print(error)
+            } else {
+                self.showSuccessToast = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.notificationCenter.post(name: .signedOut, object: nil)                    
+                }
+            }
         }
-        
-        notificationCenter.post(name: .signedOut, object: nil)
     }
 }

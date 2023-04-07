@@ -12,22 +12,38 @@ let TodosCollectionName = "todos"
 
 protocol TodoService {
     func fetchTodos(completion: @escaping ([Todo]) -> Void)
-    func createTodo(description: String, priority: TodoPriority)
-    func deleteTodo(completion: @escaping SimpleAction, id: String)
-    func toggleTodo(id: String, done: Bool)
+
+    func createTodo(
+        description: String,
+        priority: TodoPriority,
+        completion: @escaping DefaultCompletion
+    )
+    func deleteTodo(
+        id: String,
+        completion: @escaping DefaultCompletion
+    )
+    func toggleTodo(
+        id: String,
+        done: Bool,
+        completion: @escaping DefaultCompletion
+    )
 }
 
 final class TodoServiceImpl: TodoService {
     private let firestore = Firestore.firestore()
     
-    func createTodo(description: String, priority: TodoPriority) {
-        firestore.collection(TodosCollectionName).addDocument(
-            data: [
-                "description": description,
-                "priority": priority.rawValue,
-                "done": false
-            ]
-        )
+    func createTodo(
+        description: String,
+        priority: TodoPriority,
+        completion: @escaping DefaultCompletion
+    ) {
+        firestore.collection(TodosCollectionName).addDocument(data: [
+            "description": description,
+            "priority": priority.rawValue,
+            "done": false
+        ]) { error in
+            completion(error)
+        }
     }
     
     func fetchTodos(completion: @escaping ([Todo]) -> Void) {
@@ -54,26 +70,25 @@ final class TodoServiceImpl: TodoService {
         }
     }
     
-    func deleteTodo(completion: @escaping SimpleAction, id: String) {
-        firestore.collection(TodosCollectionName).document(id).delete() { error in
-            if let error = error {
-                print(error)
-            } else {
-                completion()
-            }
+    func deleteTodo(id: String, completion: @escaping DefaultCompletion) {
+        firestore.collection(TodosCollectionName).document(id).delete { error in
+            completion(error)
         }
     }
     
-    func toggleTodo(id: String, done: Bool) {
+    func toggleTodo(
+        id: String,
+        done: Bool,
+        completion: @escaping DefaultCompletion
+    ) {
         firestore
             .collection(TodosCollectionName)
             .document(id)
             .updateData(["done": !done]) { error in
-                if let error = error {
-                    print(error)
+                completion(error)
             }
-        }
     }
 }
+
 
 

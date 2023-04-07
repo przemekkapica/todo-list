@@ -14,15 +14,17 @@ import GoogleSignIn
 
 protocol AuthService {
     func signInWithGoogle(
-        completion: @escaping SimpleAction,
-        rootViewController: UIViewController)
+        rootViewController: UIViewController,
+        completion: @escaping DefaultCompletion
+    )
+    
+    func signOut(completion: @escaping DefaultCompletion)
 }
 
 final class AuthServiceImpl: AuthService {
-    
     func signInWithGoogle(
-        completion: @escaping SimpleAction,
-        rootViewController: UIViewController
+        rootViewController: UIViewController,
+        completion: @escaping DefaultCompletion
     ) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
@@ -31,32 +33,38 @@ final class AuthServiceImpl: AuthService {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
             if let error = error {
-                print(error)
+                completion(error)
                 return
             }
             
             guard let user = result?.user,
                   let idToken = user.idToken?.tokenString
             else {
-                print("User or id token is nil")
+                completion(CustomError.authenticationError)
                 return
             }
             
             let credential = GoogleAuthProvider.credential(
                 withIDToken: idToken,
-                accessToken: user.accessToken.tokenString)
+                accessToken: user.accessToken.tokenString
+            )
             
-            self.authWithFirebase(with: credential)
+            Auth.auth().signIn(with: credential) { _, error in
+                completion(error)
+                return
+            }
             
-            completion()
+            completion(nil)
         }
     }
     
-    private func authWithFirebase(with credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { result, error in
-            if let error = error {
-                print(error)
-            }
+    func signOut(completion: @escaping DefaultCompletion) {
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance.signOut()
+            completion(nil)
+        } catch {
+            completion(error)
         }
     }
 }

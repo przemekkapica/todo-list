@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
@@ -21,6 +22,12 @@ struct ProfileView: View {
         }
         .padding(.horizontal, 24)
         .navigationBarTitle("")
+        .toast(isPresenting: $viewModel.showErrorToast) {
+            errorToast()
+        }
+        .toast(isPresenting: $viewModel.showSuccessToast, duration: 1) {
+            successToast(title: "Signed out")
+        }
     }
 }
 
@@ -47,7 +54,6 @@ struct ProfileInfo: View {
                 .foregroundColor(Color.secondary)
         }
     }
-    
 }
 
 struct ProfileView_Previews: PreviewProvider {
