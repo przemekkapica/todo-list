@@ -13,6 +13,8 @@ final class ProfileViewModel: ObservableObject {
     @Published var fullname: String
     @Published var photoUrl: URL?
     @Published var email: String?
+    @Published var showErrorToast = false
+    @Published var showSuccessToast = false
     
     private let notificationCenter: NotificationCenter
     private let authService: AuthService
@@ -32,10 +34,13 @@ final class ProfileViewModel: ObservableObject {
     func signOut() {
         self.authService.signOut { error in
             if let error = error {
-                // show it to UI
+                self.showErrorToast = true
                 print(error)
             } else {
-                self.notificationCenter.post(name: .signedOut, object: nil)
+                self.showSuccessToast = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.notificationCenter.post(name: .signedOut, object: nil)                    
+                }
             }
         }
     }

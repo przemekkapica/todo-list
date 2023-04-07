@@ -11,5 +11,5 @@ target 'TodoList' do
   pod 'FirebaseFirestoreSwift'
   pod 'GoogleSignIn'
   pod 'GoogleSignInSwiftSupport'
-  
+  pod 'AlertToast'
 end

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     @Published var todos: [Todo] = []
     @Published var bottomSheetPresented = false
+    @Published var showErrorToast = false
     
     private let todoService: TodoService
     
@@ -30,7 +32,7 @@ final class HomeViewModel: ObservableObject {
         
         self.todoService.deleteTodo(id: id) { error in
             if let error = error {
-                // show it to the UI
+                self.showErrorToast = true
                 print(error)
             } else {
                 self.fetchTodos()
@@ -41,7 +43,7 @@ final class HomeViewModel: ObservableObject {
     func toggleTodo(todo: Todo) {
         todoService.toggleTodo(id: todo.id, done: todo.done) { error in
             if let error = error {
-                // show it to the UI
+                self.showErrorToast = true
                 print(error)
             } else {
                 self.fetchTodos()
