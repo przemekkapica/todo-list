@@ -15,23 +15,28 @@ final class ProfileViewModel: ObservableObject {
     @Published var email: String?
     
     private let notificationCenter: NotificationCenter
+    private let authService: AuthService
     
-    init(notificationCenter: NotificationCenter = .default) {
+    init(
+        notificationCenter: NotificationCenter = .default,
+        authService: AuthService = AuthServiceImpl()
+    ) {
         self.fullname = Auth.auth().currentUser?.displayName ?? "Preview name"
         self.email = GIDSignIn.sharedInstance.currentUser?.profile?.email ?? "previewemail@mail.com"
         self.photoUrl = Auth.auth().currentUser?.photoURL
         
         self.notificationCenter = notificationCenter
+        self.authService = authService
     }
     
     func signOut() {
-        do {
-            try Auth.auth().signOut()
-            GIDSignIn.sharedInstance.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        self.authService.signOut { error in
+            if let error = error {
+                // show it to UI
+                print(error)
+            } else {
+                self.notificationCenter.post(name: .signedOut, object: nil)
+            }
         }
-        
-        notificationCenter.post(name: .signedOut, object: nil)
     }
 }

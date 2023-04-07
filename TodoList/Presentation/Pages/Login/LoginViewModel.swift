@@ -25,12 +25,18 @@ final class LoginViewModel: ObservableObject {
               let rootViewController = windowScene.windows.first?.rootViewController else { return }
         
         authService.signInWithGoogle(
-            completion: emitSignInState,
             rootViewController: rootViewController
-        )
+        ) { error in
+                if let error = error {
+                    // show it to UI
+                    print(error)
+                } else {
+                    self.emitSignInState()
+                }
+            }
     }
     
-    func emitSignInState() {
+    private func emitSignInState() {
         notificationCenter.post(name: .signedIn, object: nil)
     }
 }

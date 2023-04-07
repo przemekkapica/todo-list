@@ -16,6 +16,8 @@
 		4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */; };
 		4D26B63129DB11F100A61F33 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63029DB11F100A61F33 /* LoginState.swift */; };
 		4D26B63329DB121800A61F33 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63229DB121800A61F33 /* LoginViewModel.swift */; };
+		4D34CB3B29E01DF500F14697 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34CB3A29E01DF500F14697 /* CustomError.swift */; };
+		4D34CB3D29E01EDA00F14697 /* DefaultCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34CB3C29E01EDA00F14697 /* DefaultCompletion.swift */; };
 		4D4ED43429DEE319006E84AE /* PriorityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4ED43329DEE319006E84AE /* PriorityPicker.swift */; };
 		4D4ED43629DEF4E7006E84AE /* TodoPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4ED43529DEF4E7006E84AE /* TodoPriority.swift */; };
 		4D59F6BE29DDA66E00196A5B /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59F6BD29DDA66E00196A5B /* Todo.swift */; };
@@ -50,6 +52,8 @@
 		4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAction.swift; sourceTree = "<group>"; };
 		4D26B63029DB11F100A61F33 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		4D26B63229DB121800A61F33 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4D34CB3A29E01DF500F14697 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		4D34CB3C29E01EDA00F14697 /* DefaultCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCompletion.swift; sourceTree = "<group>"; };
 		4D4ED43329DEE319006E84AE /* PriorityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityPicker.swift; sourceTree = "<group>"; };
 		4D4ED43529DEF4E7006E84AE /* TodoPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPriority.swift; sourceTree = "<group>"; };
 		4D59F6BD29DDA66E00196A5B /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */,
+				4D34CB3A29E01DF500F14697 /* CustomError.swift */,
+				4D34CB3C29E01EDA00F14697 /* DefaultCompletion.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D34CB3B29E01DF500F14697 /* CustomError.swift in Sources */,
 				4DB55A8E29DC7ABD00F72388 /* AppView.swift in Sources */,
 				4DB55A9029DC7AC400F72388 /* AppState.swift in Sources */,
 				4D26B62C29DB0B7300A61F33 /* UniversalButton.swift in Sources */,
@@ -417,6 +424,7 @@
 				4D4ED43429DEE319006E84AE /* PriorityPicker.swift in Sources */,
 				4D26B60C29D9968200A61F33 /* TodoListApp.swift in Sources */,
 				4DB55A9E29DC917400F72388 /* ProfileViewModel.swift in Sources */,
+				4D34CB3D29E01EDA00F14697 /* DefaultCompletion.swift in Sources */,
 				4D59F6BE29DDA66E00196A5B /* Todo.swift in Sources */,
 				4D59F6CA29DDE03600196A5B /* UniversalTextField.swift in Sources */,
 				4DB55A7E29DC301500F72388 /* HomeView.swift in Sources */,

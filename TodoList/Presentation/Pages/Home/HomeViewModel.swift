@@ -28,11 +28,24 @@ final class HomeViewModel: ObservableObject {
             self.todos[$0].id
         }[0]
         
-        self.todoService.deleteTodo(completion: self.fetchTodos, id: id)
+        self.todoService.deleteTodo(id: id) { error in
+            if let error = error {
+                // show it to the UI
+                print(error)
+            } else {
+                self.fetchTodos()
+            }
+        }
     }
     
     func toggleTodo(todo: Todo) {
-        todoService.toggleTodo(id: todo.id, done: todo.done)
-        self.fetchTodos()
+        todoService.toggleTodo(id: todo.id, done: todo.done) { error in
+            if let error = error {
+                // show it to the UI
+                print(error)
+            } else {
+                self.fetchTodos()
+            }
+        }
     }
 }

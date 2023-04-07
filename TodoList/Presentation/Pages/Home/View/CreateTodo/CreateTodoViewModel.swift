@@ -18,6 +18,11 @@ final class CreateTodoViewModel: ObservableObject {
         self.todoService.createTodo(
             description: description,
             priority: priority
-        )
+        ) { error in
+            if let error = error {
+                // show it on UI
+                print(error)
+            }
+        }
     }
 }
