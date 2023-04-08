@@ -15,11 +15,22 @@ struct LoginView: View {
             Text("Express TODO")
                 .font(.largeTitle)
             
-            UniversalButton(title: "Sign in with Google") {
-                viewModel.signIn()
-            }
+            signInButton()
         }
         .padding(.horizontal, 24)
+    }
+    
+    fileprivate func signInButton() -> UniversalButton {
+        return UniversalButton (
+            title: "Sign in with Google",
+            icon: ButtonIcon(
+                image: UIImage(named: "GoogleLogo"),
+                placement: .left,
+                preserveColor: true
+            )
+        ) {
+            viewModel.signIn()
+        }
     }
 }
 

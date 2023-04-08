@@ -16,9 +16,7 @@ struct ProfileView: View {
             Spacer()
             ProfileInfo(viewModel: viewModel)
             Spacer()
-            UniversalButton(title: "Sign out") {
-                viewModel.signOut()
-            }
+            signOutButton()
         }
         .padding(.horizontal, 24)
         .navigationBarTitle("")
@@ -27,6 +25,18 @@ struct ProfileView: View {
         }
         .toast(isPresenting: $viewModel.showSuccessToast, duration: 1) {
             successToast(title: "Signed out")
+        }
+    }
+    
+    fileprivate func signOutButton() -> UniversalButton {
+        return UniversalButton(
+            title: "Sign out",
+            icon: ButtonIcon(
+                image: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+                placement: .right
+            )
+        ) {
+            viewModel.signOut()
         }
     }
 }
