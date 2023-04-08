@@ -16,6 +16,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
+                UniversalBackground()
+                
                 TodoList(viewModel: viewModel)
                 
                 AddTodoButton(viewModel: viewModel)
@@ -32,30 +34,40 @@ struct TodoList: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        List {
-            ForEach(viewModel.todos, id: \.id) { todo in
-                Button {
-                    viewModel.toggleTodo(todo: todo)
-                } label: {
-                    todoEntry(todo: todo)
-                }
+        ZStack {
+            if viewModel.todos.isEmpty {
+                Text("Well done! There are no tasks")
+                    .font(.title3)
+                    .foregroundColor(.secondary)
             }
-            .onDelete(perform: viewModel.deleteTodo)
+            List {
+                ForEach(viewModel.todos, id: \.id) { todo in
+                    Button {
+                        viewModel.toggleTodo(todo: todo)
+                    } label: {
+                        todoEntry(todo: todo)
+                    }
+                }
+                .onDelete(perform: viewModel.deleteTodo)
+            }
+            .scrollDisabled(viewModel.todos.isEmpty)
+            .listStyle(.sidebar)
+            .navigationTitle("Your TODOs")
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .foregroundColor(Color.primary)
+                    }
+                }
+                if !viewModel.todos.isEmpty {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    }
+                }
         }
-        .listStyle(.sidebar)
-        .navigationTitle("Your TODOs")
-        .toolbar {
-            ToolbarItem {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    Image(systemName: "person.crop.circle")
-                        .foregroundColor(Color.primary)
-                }
-            }
-            ToolbarItem(placement: .navigationBarLeading) {
-                EditButton()
-            }
         }
     }
     

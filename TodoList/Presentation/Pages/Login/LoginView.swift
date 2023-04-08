@@ -11,13 +11,17 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 32) {
-            Text("Express TODO")
-                .font(.largeTitle)
+        ZStack {
+            UniversalBackground()
             
-            signInButton()
+            VStack(alignment: .leading, spacing: 32) {
+                Text("Express TODO")
+                    .font(.largeTitle)
+                
+                signInButton()
+            }
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
     }
     
     fileprivate func signInButton() -> UniversalButton {

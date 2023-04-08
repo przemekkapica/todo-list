@@ -12,19 +12,23 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     
     var body: some View {
-        VStack(spacing: 8) {
-            Spacer()
-            ProfileInfo(viewModel: viewModel)
-            Spacer()
-            signOutButton()
+        ZStack {
+            UniversalBackground()
+            
+            VStack(spacing: 8) {
+                Spacer()
+                ProfileInfo(viewModel: viewModel)
+                Spacer()
+                signOutButton()
+            }
+            .padding(.horizontal, 24)
+            .navigationBarTitle("")
+            .toast(isPresenting: $viewModel.showErrorToast) {
+                errorToast()
+            }
+            .toast(isPresenting: $viewModel.showSuccessToast, duration: 1) {
+                successToast(title: "Signed out")
         }
-        .padding(.horizontal, 24)
-        .navigationBarTitle("")
-        .toast(isPresenting: $viewModel.showErrorToast) {
-            errorToast()
-        }
-        .toast(isPresenting: $viewModel.showSuccessToast, duration: 1) {
-            successToast(title: "Signed out")
         }
     }
     
