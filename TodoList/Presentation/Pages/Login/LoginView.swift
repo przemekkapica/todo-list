@@ -14,13 +14,18 @@ struct LoginView: View {
         ZStack {
             UniversalBackground()
             
-            VStack(alignment: .leading, spacing: 32) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("Express TODO")
                     .font(.largeTitle)
+                Text("#getitgoing")
+                    .foregroundColor(.secondary)
                 
                 signInButton()
+                    .padding(.top, 40)
             }
             .padding(.horizontal, 24)
+            .padding(.vertical, 46)
+            .background(Color(uiColor: UIColor(named: "LoginBackground") ?? .systemBackground))
         }
     }
     

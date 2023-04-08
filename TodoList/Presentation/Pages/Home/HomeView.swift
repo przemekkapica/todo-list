@@ -37,7 +37,6 @@ struct TodoList: View {
         ZStack {
             if viewModel.todos.isEmpty {
                 Text("Well done! There are no tasks")
-                    .font(.title3)
                     .foregroundColor(.secondary)
             }
             List {
