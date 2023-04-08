@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UniversalButton: View {
     var title: String
+    var disabled: Bool = false
     var action: SimpleAction
     
     var body: some View {
@@ -17,6 +18,7 @@ struct UniversalButton: View {
         } label: {
             buttonLabel
         }
+        .disabled(disabled)
     }
     
     private var buttonLabel: some View {
@@ -25,14 +27,14 @@ struct UniversalButton: View {
             .foregroundColor(Color.white)
             .frame(height: 52)
             .frame(maxWidth: .infinity)
-            .background(Color.green)
+            .background(disabled ? Color(.systemGray4) : Color.green)
             .cornerRadius(16)
     }
 }
 
 struct UniversalButton_Previews: PreviewProvider {
     static var previews: some View {
-        UniversalButton(title: "Press me") {
+        UniversalButton(title: "Press me", disabled: true) {
             
         }
     }

@@ -27,7 +27,10 @@ struct CreateTodoSheet: View {
                     .padding(.top, 16)
                 PriorityPicker(selectedPriority: $selectedPriority)
                 Spacer()
-                UniversalButton(title: "Create") {
+                UniversalButton(
+                    title: "Create",
+                    disabled: viewModel.isButtonDisabled(description: description)
+                ) {
                     viewModel.createTodo(
                         description: description,
                         priority: selectedPriority

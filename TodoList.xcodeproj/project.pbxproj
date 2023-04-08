@@ -16,6 +16,7 @@
 		4D26B62F29DB0BCA00A61F33 /* SimpleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */; };
 		4D26B63129DB11F100A61F33 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63029DB11F100A61F33 /* LoginState.swift */; };
 		4D26B63329DB121800A61F33 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26B63229DB121800A61F33 /* LoginViewModel.swift */; };
+		4D286DEF29E1AA190091C66E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D286DEE29E1AA190091C66E /* StringExtension.swift */; };
 		4D34CB3B29E01DF500F14697 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34CB3A29E01DF500F14697 /* CustomError.swift */; };
 		4D34CB3D29E01EDA00F14697 /* DefaultCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34CB3C29E01EDA00F14697 /* DefaultCompletion.swift */; };
 		4D34CB3F29E0600600F14697 /* UniversalToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34CB3E29E0600600F14697 /* UniversalToast.swift */; };
@@ -53,6 +54,7 @@
 		4D26B62E29DB0BCA00A61F33 /* SimpleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAction.swift; sourceTree = "<group>"; };
 		4D26B63029DB11F100A61F33 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		4D26B63229DB121800A61F33 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4D286DEE29E1AA190091C66E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4D34CB3A29E01DF500F14697 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		4D34CB3C29E01EDA00F14697 /* DefaultCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCompletion.swift; sourceTree = "<group>"; };
 		4D34CB3E29E0600600F14697 /* UniversalToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalToast.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4DB55A9429DC7CD000F72388 /* NotificationNameExtension.swift */,
+				4D286DEE29E1AA190091C66E /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				4D26B62A29DB0A1000A61F33 /* LoginView.swift in Sources */,
 				4DB55A8129DC307100F72388 /* AuthService.swift in Sources */,
 				4D59F6C729DDDB5700196A5B /* CreateTodoViewModel.swift in Sources */,
+				4D286DEF29E1AA190091C66E /* StringExtension.swift in Sources */,
 				4DB55A9729DC7EED00F72388 /* LoadingView.swift in Sources */,
 				4DB55A9C29DC916800F72388 /* ProfileView.swift in Sources */,
 				4D59F6C529DDDB4E00196A5B /* CreateTodoSheet.swift in Sources */,

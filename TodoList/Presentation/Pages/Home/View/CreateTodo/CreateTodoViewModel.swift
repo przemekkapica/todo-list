@@ -18,12 +18,16 @@ final class CreateTodoViewModel: ObservableObject {
     
     func createTodo(description: String, priority: TodoPriority) {
         self.todoService.createTodo(
-            description: description,
+            description: description.trim(),
             priority: priority
         ) { error in
             if let error = error {
                 print(error)
             }
         }
+    }
+    
+    func isButtonDisabled(description: String) -> Bool {
+        return description.trim() == ""
     }
 }
