@@ -26,7 +26,8 @@ struct CreateTodoSheet: View {
                     .font(.callout)
                     .padding(.top, 16)
                 PriorityPicker(selectedPriority: $selectedPriority)
-                Spacer()
+                    .padding(.bottom, 36)
+
                 UniversalButton(
                     title: "Create",
                     disabled: viewModel.isButtonDisabled(description: description)
@@ -40,6 +41,7 @@ struct CreateTodoSheet: View {
             }
         }
         .padding(.horizontal, 24)
+        .padding(.bottom, 8)
     }
     
     let sheetTopIndicator: some View = Capsule()
