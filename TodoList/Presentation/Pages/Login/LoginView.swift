@@ -18,6 +18,7 @@ struct LoginView: View {
                 Text("Express TODO")
                     .font(.largeTitle)
                 Text("#getitgoing")
+                    .font(.body)
                     .foregroundColor(.secondary)
                 
                 signInButton()

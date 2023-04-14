@@ -64,6 +64,7 @@ struct TodoList: View {
                 if !viewModel.todos.isEmpty {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()
+                            .font(.body)
                     }
                 }
         }
